@@ -1,0 +1,30 @@
+.product-catalogue-content {
+  padding: 40px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  &-details {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+  }
+
+  &-name {
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.0625;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  &-badges {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.25rem;
+  }
+}

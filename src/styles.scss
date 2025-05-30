@@ -1,0 +1,14 @@
+// Global styles
+@use "assets/styles/snackbar";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #CDCDCD;
+}

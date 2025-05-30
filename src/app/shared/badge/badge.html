@@ -1,0 +1,9 @@
+<span
+  class="gec-badge"
+  [ngClass]="['gec-badge-' + color, clickable ? 'gec-badge-clickable' : '']"
+  [tabindex]="clickable ? 0 : -1"
+  [attr.role]="clickable ? 'button' : null"
+  (click)="onClick($event)"
+>
+  <ng-content></ng-content>
+</span>

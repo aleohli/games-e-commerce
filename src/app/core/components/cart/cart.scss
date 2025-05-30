@@ -1,0 +1,25 @@
+$border: 1px solid rgba(184, 184, 184, 0.5);
+
+:host {
+  height: 100%;
+
+  .cart-button {
+    cursor: pointer;
+    height: 100%;
+    background-color: #FFFFFF;
+    font-size: 0.875rem;
+    border-top: none;
+    border-bottom: none;
+    border-right: $border;
+    border-left: $border;
+    padding: 0 15px;
+
+    &.empty {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.dropdown-content {
+  background-color: #FFFFFF;
+}
