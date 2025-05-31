@@ -1,0 +1,21 @@
+@if (state.banner) {
+  <gec-product-banner
+    [title]="state.banner.title"
+    [imageSrc]="state.banner.imageSrc"
+    [productInfo]="state.banner.info"
+    (btnClick)="onBannerBtnClick()" />
+}
+@if (state.products?.length) {
+  <section class="product-catalogue-content">
+    @for (product of state.products; track product.id) {
+      <gec-image-card [imageSrc]="product.imageSrc" [info]="product.name">
+        <gec-product-content [product]="product" (addToCart)="onAddToCart(product)" />
+      </gec-image-card>
+    }
+  </section>
+}
+
+@if (state.loadingBanner || state.loadingProducts) {
+  <span class="loading-spinner"></span>
+}
+

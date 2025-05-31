@@ -1,0 +1,18 @@
+<button
+  #cartBtn
+  class="cart-button"
+  [ngClass]="{ 'empty': isEmpty }"
+  (click)="openDropdown(cartBtn)"
+>
+  <span>
+    <img [src]="'/icons/cart.svg'" alt="Cart icon" [width]="16" />
+    {{ cartState.amount }}
+  </span>
+</button>
+
+<ng-template #cartDropdown>
+  <gec-cart-dropdown
+    [cartState]="cartState"
+    (clearCart)="onClearCart()"
+    (removeProduct)="onRemoveProduct($event)" />
+</ng-template>

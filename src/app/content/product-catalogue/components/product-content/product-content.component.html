@@ -1,0 +1,26 @@
+<div class="product-content-name">
+  {{ product.name }}
+</div>
+<div class="product-content-badges">
+  @switch (product.status) {
+    @case (productStatus.NOT_OWNED) {
+      @if (product.discount) {
+        <gec-badge [color]="'green'"> {{ '-' + product.discount | percent }}</gec-badge>
+      }
+      <gec-badge [color]="'grey'"
+                 [clickable]="true"
+                 class="product-content-add-badge"
+                 (badgeClick)="onAddToCart()">
+        <span class="add-badge-default">{{ product.price | currency }}</span>
+        <span class="add-badge-hover">Add</span>
+      </gec-badge>
+    }
+    @case (productStatus.OWNED) {
+      <gec-badge [color]="'light-grey'">{{ product.status }}</gec-badge>
+    }
+    @case (productStatus.IN_CART) {
+      <gec-badge [color]="'grey'"> {{ product.status }}</gec-badge>
+    }
+  }
+</div>
+
