@@ -2,7 +2,7 @@
   <div class="cart-dropdown-summary-header">
     <span class="cart-dropdown-summary-amount"> {{ cartState.amount }} items in cart</span>
     <span class="cart-dropdown-summary-total-price">{{ cartState.totalPrice | currency }}</span>
-    <button class="cart-dropdown-summary-button" (click)="onClearCart()">Clear cart</button>
+    <button class="primary-button" (click)="onClearCart()">Clear cart</button>
   </div>
 
   <ul class="cart-dropdown-summary-products">
@@ -13,7 +13,7 @@
           <span>{{ product.name }}</span>
           <a (click)="onRemoveProduct(product.id)">Remove</a>
         </span>
-        <span>{{ product.price | currency }}</span>
+        <span class="product-row-price">{{ product.price | currency }}</span>
       </li>
     }
   </ul>

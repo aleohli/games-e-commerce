@@ -1,3 +1,5 @@
+@use 'assets/styles/_colours.scss';
+
 .menu {
   &-header {
     position: sticky;
@@ -8,8 +10,8 @@
     padding: 0 110px;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(360deg, #DCDCDC 0.01%, #FFFFFF 100%, #FFFFFF 100%);
-    box-shadow: 0 0 15px 0 #00000026;
+    background: linear-gradient(360deg, colours.$grey-800 40%, colours.$white 100%);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
 
     @media (max-width: 599px) {
       padding: 0 20px;

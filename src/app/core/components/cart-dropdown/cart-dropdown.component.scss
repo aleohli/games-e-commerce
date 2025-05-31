@@ -1,10 +1,12 @@
+@use 'assets/styles/_colours.scss';
+
 :host {
-  background-color: #FFFFFF;
+  background-color: colours.$white;
   border: 1px solid rgba(184, 184, 184, 0.5);
   font-size: 0.9375rem;
 
   .cart-dropdown-summary {
-    width: 390px;
+    width: 370px;
     text-transform: uppercase;
 
     &-header {
@@ -14,25 +16,8 @@
       align-items: center;
       gap: 10px;
       font-weight: 700;
-    }
-
-    &-button {
-      border: none;
-      cursor: pointer;
-      padding: 0.75rem;
-      font-size: 0.875rem;
-      line-height: 1.375;
-      letter-spacing: 0;
-      text-align: center;
-      vertical-align: middle;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      background: linear-gradient(0deg, #7A3DC6 0%, #B65AE2 100%);
-
-      &:hover {
-        background: linear-gradient(0deg, #8e4ee9 0%, #d18cf7 100%);
-        box-shadow: 0 4px 16px rgba(122, 61, 198, 0.15);
-      }
+      line-height: 1;
+      color: colours.$grey-70;
     }
 
     &-products {
@@ -48,6 +33,7 @@
       gap: 10px;
       max-width: 100%;
       border-top: 1px solid rgba(184, 184, 184, 0.3);
+      color: colours.$grey-80;
 
       &:hover {
         .product-row-name {
@@ -62,7 +48,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 0.25rem;
+        gap: 4px;
         min-width: 0;
 
         span {
@@ -78,11 +64,16 @@
           pointer-events: none;
           transition: opacity 0.2s;
           cursor: pointer;
-          color: #212121;
+          color: colours.$grey-80;
           font-size: 0.75rem;
           text-decoration: underline;
           text-transform: capitalize;
         }
+      }
+
+      .product-row-price {
+        margin: auto;
+        color: colours.$grey-100;
       }
     }
   }

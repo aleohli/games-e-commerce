@@ -1,3 +1,5 @@
+@use 'assets/styles/_colours.scss';
+
 $border: 1px solid rgba(184, 184, 184, 0.5);
 
 :host {
@@ -5,21 +7,24 @@ $border: 1px solid rgba(184, 184, 184, 0.5);
 
   .cart-button {
     cursor: pointer;
-    color: #404040;
+    color: colours.$grey-100;
     height: 100%;
-    background-color: #FFFFFF;
+    background-color: colours.$white;
+    line-height: 100%;
     font-size: 0.875rem;
+    font-weight: 600;
     border-top: none;
     border-bottom: none;
     border-right: $border;
     border-left: $border;
-    padding: 0 15px;
+    padding: 0 16px;
     position: relative;
 
-    &.empty {
+
+    &.disabled {
       cursor: not-allowed;
 
-      span {
+      div {
         opacity: 0.5;
       }
     }

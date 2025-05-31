@@ -1,7 +1,10 @@
+@use 'assets/styles/_colours.scss';
+
 :host {
-  background-color: #E0E0E0;
+  background-color: colours.$grey-810;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3);
 
   .image-card {
     &-image {

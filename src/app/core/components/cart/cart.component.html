@@ -1,13 +1,14 @@
 <button
   #cartBtn
   class="cart-button"
-  [ngClass]="{ 'empty': isEmpty }"
+  [disabled]="isEmpty"
+  [ngClass]="{ 'disabled': isEmpty }"
   (click)="openDropdown(cartBtn)"
 >
-  <span>
+  <div [@countAnimation]="cartState.amount">
     <img [src]="'/icons/cart.svg'" alt="Cart icon" [width]="16" />
-    {{ cartState.amount }}
-  </span>
+    <span>{{ cartState.amount }}</span>
+  </div>
 </button>
 
 <ng-template #cartDropdown>

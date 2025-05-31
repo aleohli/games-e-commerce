@@ -1,29 +1,32 @@
+@use 'assets/styles/_colours.scss';
+
 .gec-badge {
   display: inline-block;
   border-radius: 2px;
   font-size: 0.8125rem;
+  line-height: 1;
   font-weight: 600;
   cursor: default;
   padding: 3px 6px;
 
+  &-light-grey, &-grey {
+    background-color: colours.$grey-810;
+    border: 1px solid colours.$grey-500;
+    box-shadow: 0 1px 1px 0 rgba(198, 198, 198, 0.5);
+  }
+
   &-light-grey {
-    background-color: #E0E0E0;
-    border: 1px solid #979797;
-    box-shadow: 0 1px 1px 0 #C6C6C680;
-    color: #979797;
+    color: colours.$grey-500;
   }
 
   &-grey {
-    background-color: #E0E0E0;
-    border: 1px solid #979797;
-    box-shadow: 0 1px 1px 0 #C6C6C680;
-    color: #404040;
+    color: colours.$grey-100;
   }
 
   &-green {
-    background-color: #00905E;
-    border: 1px solid #00905E;
-    color: #FFFFFF;
+    background-color: colours.$green;
+    border: 1px solid colours.$green;
+    color: colours.$white;
   }
 
   &-clickable {

@@ -19,12 +19,21 @@ import { CartState, selectCartState } from 'app/core/store/cart/cart.reducer';
 import { Store } from '@ngrx/store';
 import { clearCart, removeProduct } from 'app/core/store/cart/cart.actions';
 import { NgClass } from '@angular/common';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'gec-cart',
   imports: [CartDropdownComponent, NgClass],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.scss'
+  styleUrl: './cart.component.scss',
+  animations: [
+    trigger('countAnimation', [
+      transition('* => *', [
+        animate('500ms ease-out', style({ transform: 'scale(1.3)' })),
+        animate('100ms', style({ transform: 'scale(1)' }))
+      ])
+    ])
+  ]
 })
 export class CartComponent implements OnInit {
   @ViewChild('cartDropdown') cartDropdown: TemplateRef<any>;

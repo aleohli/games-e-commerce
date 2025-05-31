@@ -1,15 +1,20 @@
 // Global styles
-@use "assets/styles/snackbar";
-@use "assets/styles/loading";
+@use 'assets/styles/loading';
+@use 'assets/styles/colours';
+@use 'assets/styles/buttons';
+@import '@fontsource/source-sans-pro/400.css';
+@import '@fontsource/source-sans-pro/600.css';
+@import '@fontsource/source-sans-pro/700.css';
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif;
+  letter-spacing: 0;
 }
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: #CDCDCD;
+  background-color: colours.$grey-800;
 }
