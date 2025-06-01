@@ -1,6 +1,6 @@
 @use 'assets/styles/_colours.scss';
 
-.primary-button {
+.gec-button {
   border: none;
   cursor: pointer;
   padding: 12px;
@@ -11,10 +11,22 @@
   vertical-align: middle;
   text-transform: uppercase;
   color: colours.$white;
-  background: linear-gradient(0deg, colours.$purple-200 0%, colours.$purple-500 100%);
 
-  &:hover {
-    background: linear-gradient(0deg, colours.$purple-300 0%, colours.$purple-600 100%);
-    box-shadow: 0 4px 16px rgba(122, 61, 198, 0.15);
+  &.primary-button {
+    background: linear-gradient(0deg, colours.$purple-200 0%, colours.$purple-500 100%);
+
+    &:hover {
+      background: linear-gradient(0deg, colours.$purple-300 0%, colours.$purple-600 100%);
+      box-shadow: 0 4px 16px rgba(122, 61, 198, 0.15);
+    }
+  }
+
+  &.secondary-button {
+    background: linear-gradient(0deg, colours.$green-200, colours.$green-500 100%);
+
+    &:hover {
+      background: linear-gradient(0deg, colours.$green-300 0%, colours.$green-600 100%);
+      box-shadow: 0 4px 16px rgba(122, 61, 198, 0.15);
+    }
   }
 }

@@ -6,7 +6,7 @@ import {
   Product,
   ProductStatus
 } from 'app/content/product-catalogue/models/product';
-import { Banner } from 'app/content/product-catalogue/models/banner';
+import { Banner } from 'app/shared/banner/models/banner';
 import { ProductCatalogueService } from 'app/content/product-catalogue/services/product-catalogue.service';
 
 export interface ProductCatalogueState {

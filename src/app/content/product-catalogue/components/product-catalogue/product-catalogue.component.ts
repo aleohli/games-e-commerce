@@ -6,7 +6,6 @@ import {
   inject,
   OnInit
 } from '@angular/core';
-import { ProductBannerComponent } from 'app/content/product-catalogue/components/product-banner/product-banner.component';
 import { ImageCardComponent } from 'app/shared/image-card/image-card.component';
 import { ProductContentComponent } from 'app/content/product-catalogue/components/product-content/product-content.component';
 import {
@@ -16,14 +15,11 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProductCatalogueFacadeService } from 'app/content/product-catalogue/store/product-catalogue-facade.service';
 import { Product } from 'app/content/product-catalogue/models/product';
+import { BannerComponent } from 'app/shared/banner/components/banner/banner.component';
 
 @Component({
   selector: 'gec-product-catalogue',
-  imports: [
-    ProductBannerComponent,
-    ImageCardComponent,
-    ProductContentComponent
-  ],
+  imports: [ImageCardComponent, ProductContentComponent, BannerComponent],
   templateUrl: './product-catalogue.component.html',
   styleUrl: './product-catalogue.component.scss',
   providers: [ProductCatalogueStore, ProductCatalogueFacadeService],

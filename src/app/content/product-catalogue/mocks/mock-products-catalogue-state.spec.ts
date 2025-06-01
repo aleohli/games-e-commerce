@@ -1,6 +1,6 @@
 import { Product, ProductStatus } from '../models/product';
 import { ProductCatalogueState } from 'app/content/product-catalogue/store/product-catalogue.store';
-import { Banner } from 'app/content/product-catalogue/models/banner';
+import { Banner } from 'app/shared/banner/models/banner';
 
 export function mockProductCatalogueState(): ProductCatalogueState {
   return {

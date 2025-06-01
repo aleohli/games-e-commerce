@@ -5,15 +5,15 @@ import {
   Input,
   Output
 } from '@angular/core';
-import { Banner } from 'app/content/product-catalogue/models/banner';
+import { Banner } from 'app/shared/banner/models/banner';
 
 @Component({
-  selector: 'gec-product-banner',
-  templateUrl: './product-banner.component.html',
-  styleUrl: './product-banner.component.scss',
+  selector: 'gec-banner',
+  templateUrl: './banner.component.html',
+  styleUrl: './banner.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductBannerComponent {
+export class BannerComponent {
   @Input({ required: true }) banner: Banner;
   @Output() btnClick = new EventEmitter();
 

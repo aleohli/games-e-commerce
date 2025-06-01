@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ProductBannerComponent } from 'app/content/product-catalogue/components/product-banner/product-banner.component';
+import { BannerComponent } from 'app/shared/banner/components/banner/banner.component';
 import { mockBanner } from 'app/content/product-catalogue/mocks/mock-products-catalogue-state.spec';
 
-describe('ProductBanner', () => {
-  let component: ProductBannerComponent;
-  let fixture: ComponentFixture<ProductBannerComponent>;
+describe('BannerComponent', () => {
+  let component: BannerComponent;
+  let fixture: ComponentFixture<BannerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProductBannerComponent]
+      imports: [BannerComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ProductBannerComponent);
+    fixture = TestBed.createComponent(BannerComponent);
     component = fixture.componentInstance;
     component.banner = mockBanner;
     fixture.detectChanges();
