@@ -1,10 +1,11 @@
 import { cartReducer, initialState } from './cart.reducer';
 import * as CartActions from './cart.actions';
 import { mockCart, mockCartState } from 'app/core/mocks/mock-cart-state.spec';
+import { Action } from '@ngrx/store';
 
 describe('cartReducer', () => {
   it('should return the initial state', () => {
-    const state = cartReducer(undefined, { type: 'unknow' } as any);
+    const state = cartReducer(undefined, { type: 'unknow' } as Action);
     expect(state).toEqual(initialState);
   });
 

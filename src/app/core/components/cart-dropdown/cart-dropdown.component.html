@@ -11,7 +11,10 @@
         <img [src]="product.imageSrc" [width]="100" [alt]="'Cart product image'" />
         <span class="product-row-name">
           <span>{{ product.name }}</span>
-          <a (click)="onRemoveProduct(product.id)">Remove</a>
+          <a
+            tabindex="0"
+            (click)="onRemoveProduct(product.id)"
+            (keydown.enter)="onRemoveProduct(product.id)">Remove</a>
         </span>
         <span class="product-row-price">{{ product.price | currency }}</span>
       </li>

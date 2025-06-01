@@ -107,6 +107,7 @@ describe('CartComponent', () => {
       flexibleConnectedTo: () => ({
         withPositions: () => ({ originX: 'end' })
       })
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any);
     spyObj.create.and.returnValue(mockOverlayRef());
 

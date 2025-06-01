@@ -39,7 +39,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartComponent implements OnInit {
-  @ViewChild('cartDropdown') cartDropdown: TemplateRef<any>;
+  @ViewChild('cartDropdown') cartDropdown: TemplateRef<void>;
   cartState: CartState;
 
   private overlayRef: OverlayRef;
