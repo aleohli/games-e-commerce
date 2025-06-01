@@ -1,23 +1,32 @@
-import { effect, inject, Injectable } from '@angular/core';
+import { effect, inject, Injectable, Signal } from '@angular/core';
 import { ProductCatalogueStore } from 'app/content/product-catalogue/store/product-catalogue.store';
 import { Product } from 'app/content/product-catalogue/models/product';
 import { Product as CartProduct } from 'app/core/models/product';
 import { CartStore } from 'app/core/store/cart.store';
+import { deepEqual } from 'fast-equals';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { distinctUntilChanged } from 'rxjs';
 
 @Injectable()
 export class ProductCatalogueFacadeService {
   private cartStore = inject(CartStore);
   private productCatalogueStore = inject(ProductCatalogueStore);
+  private readonly products$ = toObservable(
+    this.productCatalogueStore.products
+  ).pipe(distinctUntilChanged(deepEqual));
 
-  readonly products = this.productCatalogueStore.products;
+  // TODO find better way to handle signals changes
+  readonly products: Signal<Product[]> = toSignal(this.products$);
   readonly loadingProducts = this.productCatalogueStore.loadingProducts;
   readonly banner = this.productCatalogueStore.banner;
   readonly loadingBanner = this.productCatalogueStore.loadingBanner;
 
   constructor() {
     effect(() => {
-      const productIds = this.cartStore.productIds();
-      this.productCatalogueStore.updateProductsStatus(productIds);
+      if (this.products().length) {
+        const productIds = this.cartStore.productIds();
+        this.productCatalogueStore.updateProductsStatus(productIds);
+      }
     });
   }
 

@@ -7,6 +7,7 @@ import {
 } from '@ngrx/signals';
 import { Product } from 'app/core/models/product';
 import { computed } from '@angular/core';
+import { withStorage } from '@larscom/ngrx-signals-storage';
 
 export interface CartState {
   cart: Product[];
@@ -59,5 +60,6 @@ export const CartStore = signalStore(
     clearCart() {
       patchState(store, () => ({ cart: [], amount: 0, totalPrice: 0 }));
     }
-  }))
+  })),
+  withStorage('cart', localStorage)
 );
