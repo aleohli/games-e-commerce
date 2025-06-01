@@ -6,6 +6,7 @@ import { Product } from 'app/content/product-catalogue/models/product';
 import { Product as CartProduct } from 'app/core/models/product';
 import { selectCartProductIds } from 'app/core/store/cart/cart.reducer';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { combineLatest } from 'rxjs';
 
 @Injectable()
 export class ProductCatalogueFacadeService {
@@ -19,10 +20,12 @@ export class ProductCatalogueFacadeService {
   }
 
   private subscribeToCartChange() {
-    this.store
-      .select(selectCartProductIds)
+    combineLatest([
+      this.store.select(selectCartProductIds),
+      this.productCatalogueStore.products$
+    ])
       .pipe(takeUntilDestroyed())
-      .subscribe((productIds) => {
+      .subscribe(([productIds]) => {
         this.productCatalogueStore.updateProductsStatus(productIds);
       });
   }

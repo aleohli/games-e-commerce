@@ -1,4 +1,5 @@
 import {
+  ActionReducer,
   createFeatureSelector,
   createReducer,
   createSelector,
@@ -6,6 +7,7 @@ import {
 } from '@ngrx/store';
 import * as CartActions from './cart.actions';
 import { Product } from 'app/core/models/product';
+import { localStorageSync } from 'ngrx-store-localstorage';
 
 export interface CartState {
   cart: Product[];
@@ -53,3 +55,12 @@ export const selectCartState = createFeatureSelector<CartState>('cart');
 export const selectCartProductIds = createSelector(selectCartState, (state) =>
   state.cart.map(({ id }) => id)
 );
+
+export function localStorageSyncReducer(
+  reducer: ActionReducer<{ cart: CartState }>
+): ActionReducer<{ cart: CartState }> {
+  return localStorageSync({
+    keys: ['cart', 'amount', 'totalPrice'],
+    rehydrate: true
+  })(reducer);
+}

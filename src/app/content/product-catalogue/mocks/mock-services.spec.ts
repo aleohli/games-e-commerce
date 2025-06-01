@@ -50,7 +50,7 @@ function mockProductCatalogueStore(): jasmine.SpyObj<ProductCatalogueStore> {
   return jasmine.createSpyObj(
     'ProductCatalogueStore',
     ['loadProducts', 'loadBanner', 'updateProductsStatus'],
-    ['state$']
+    { state$: of(mockProductCatalogueState()), products$: of(mockProducts) }
   );
 }
 

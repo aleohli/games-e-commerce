@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { exhaustMap, tap } from 'rxjs';
+import { distinctUntilChanged, exhaustMap, tap } from 'rxjs';
 import { tapResponse } from '@ngrx/operators';
 import {
   Product,
@@ -8,6 +8,7 @@ import {
 } from 'app/content/product-catalogue/models/product';
 import { Banner } from 'app/shared/banner/models/banner';
 import { ProductCatalogueService } from 'app/content/product-catalogue/services/product-catalogue.service';
+import { deepEqual } from 'fast-equals';
 
 export interface ProductCatalogueState {
   products: Product[];
@@ -19,6 +20,10 @@ export interface ProductCatalogueState {
 @Injectable()
 export class ProductCatalogueStore extends ComponentStore<ProductCatalogueState> {
   private productCatalogueService = inject(ProductCatalogueService);
+
+  readonly products$ = this.select((state) => state.products).pipe(
+    distinctUntilChanged((prev, curr) => deepEqual(prev, curr))
+  );
 
   constructor() {
     super({
