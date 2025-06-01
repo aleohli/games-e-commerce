@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ImageCardComponent } from 'app/shared/image-card/image-card.component';
 
 describe('ImageCard', () => {

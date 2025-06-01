@@ -1,4 +1,11 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  DestroyRef,
+  inject,
+  OnInit
+} from '@angular/core';
 import { ProductBannerComponent } from 'app/content/product-catalogue/components/product-banner/product-banner.component';
 import { ImageCardComponent } from 'app/shared/image-card/image-card.component';
 import { ProductContentComponent } from 'app/content/product-catalogue/components/product-content/product-content.component';
@@ -19,12 +26,14 @@ import { Product } from 'app/content/product-catalogue/models/product';
   ],
   templateUrl: './product-catalogue.component.html',
   styleUrl: './product-catalogue.component.scss',
-  providers: [ProductCatalogueStore, ProductCatalogueFacadeService]
+  providers: [ProductCatalogueStore, ProductCatalogueFacadeService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductCatalogueComponent implements OnInit {
   state: ProductCatalogueState;
   storeFacade = inject(ProductCatalogueFacadeService);
   destroyRef = inject(DestroyRef);
+  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
     this.storeFacade.loadProducts();
@@ -33,6 +42,7 @@ export class ProductCatalogueComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((state) => {
         this.state = state;
+        this.cdr.markForCheck();
       });
   }
 

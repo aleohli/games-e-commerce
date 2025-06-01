@@ -1,9 +1,9 @@
 <figure class="product-banner">
-  @if (title) {
-    <figcaption class="product-banner-title">{{ title }}</figcaption>
+  @if (banner.title) {
+    <figcaption class="product-banner-title">{{ banner.title }}</figcaption>
   }
   <div class="product-banner-image-wrapper">
-    <img class="product-banner-image" [src]="imageSrc" [alt]="'Banner for ' + productInfo" />
+    <img class="product-banner-image" [src]="banner.imageSrc" [alt]="'Banner for ' + banner.info" />
     <button class="product-banner-hidden-btn" (click)="onBtnClick()">
       A secret button that you should totally implement
     </button>

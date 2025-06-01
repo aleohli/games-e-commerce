@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 import {
   Product,
   ProductStatus
@@ -10,7 +16,8 @@ import { BadgeComponent } from 'app/shared/badge/badge.component';
   selector: 'gec-product-content',
   imports: [PercentPipe, CurrencyPipe, BadgeComponent],
   templateUrl: './product-content.component.html',
-  styleUrl: './product-content.component.scss'
+  styleUrl: './product-content.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductContentComponent {
   @Input({ required: true }) product: Product;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CartComponent } from 'app/core/components/cart/cart.component';
 import { RouterLink } from '@angular/router';
 
@@ -6,6 +6,7 @@ import { RouterLink } from '@angular/router';
   selector: 'gec-menu',
   imports: [CartComponent, RouterLink],
   templateUrl: './menu.component.html',
-  styleUrl: './menu.component.scss'
+  styleUrl: './menu.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MenuComponent {}

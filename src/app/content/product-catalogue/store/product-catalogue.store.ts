@@ -39,7 +39,6 @@ export class ProductCatalogueStore extends ComponentStore<ProductCatalogueState>
               this.patchState({ products, loadingProducts: false }),
             error: () => {
               this.patchState({ loadingProducts: false });
-              // TODO show error message
             }
           })
         )
@@ -56,7 +55,6 @@ export class ProductCatalogueStore extends ComponentStore<ProductCatalogueState>
             next: (banner) => this.patchState({ banner, loadingBanner: false }),
             error: () => {
               this.patchState({ loadingBanner: false });
-              // TODO show error message
             }
           })
         )

@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { delay, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Product } from 'app/content/product-catalogue/models/product';
 import { Banner } from 'app/content/product-catalogue/models/banner';
 
@@ -13,10 +13,10 @@ export class ProductCatalogueService {
   private http = inject(HttpClient);
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl).pipe(delay(2000));
+    return this.http.get<Product[]>(this.productsUrl);
   }
 
   getBanner(): Observable<Banner> {
-    return this.http.get<Banner>(this.bannerUrl).pipe(delay(1200));
+    return this.http.get<Banner>(this.bannerUrl);
   }
 }

@@ -1,4 +1,6 @@
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   DestroyRef,
   inject,
@@ -33,7 +35,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
         animate('100ms', style({ transform: 'scale(1)' }))
       ])
     ])
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartComponent implements OnInit {
   @ViewChild('cartDropdown') cartDropdown: TemplateRef<any>;
@@ -44,6 +47,7 @@ export class CartComponent implements OnInit {
   private overlay = inject(Overlay);
   private viewContainerRef = inject(ViewContainerRef);
   private store = inject(Store);
+  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
     this.store
@@ -51,6 +55,7 @@ export class CartComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((state) => {
         this.cartState = state;
+        this.cdr.markForCheck();
         if (this.isEmpty) {
           this.closeDropdown();
         }

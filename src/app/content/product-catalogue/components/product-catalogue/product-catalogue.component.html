@@ -1,8 +1,6 @@
 @if (state.banner) {
   <gec-product-banner
-    [title]="state.banner.title"
-    [imageSrc]="state.banner.imageSrc"
-    [productInfo]="state.banner.info"
+    [banner]="state.banner"
     (btnClick)="onBannerBtnClick()" />
 }
 @if (state.products?.length) {

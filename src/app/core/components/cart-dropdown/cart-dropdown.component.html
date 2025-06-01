@@ -6,7 +6,7 @@
   </div>
 
   <ul class="cart-dropdown-summary-products">
-    @for (product of cartState.cart; track product.id) {
+    @for (product of cartState?.cart; track product.id) {
       <li class="cart-dropdown-summary-product-row">
         <img [src]="product.imageSrc" [width]="100" [alt]="'Cart product image'" />
         <span class="product-row-name">

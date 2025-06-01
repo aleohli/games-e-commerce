@@ -9,10 +9,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable()
 export class ProductCatalogueFacadeService {
-  private store: Store = inject(Store);
-  private productCatalogueStore: ProductCatalogueStore = inject(
-    ProductCatalogueStore
-  );
+  private store = inject(Store);
+  private productCatalogueStore = inject(ProductCatalogueStore);
 
   readonly state$ = this.productCatalogueStore.state$;
 

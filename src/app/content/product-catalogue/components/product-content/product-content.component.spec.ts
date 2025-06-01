@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ProductContentComponent } from 'app/content/product-catalogue/components/product-content/product-content.component';
+import { mockProducts } from 'app/content/product-catalogue/mocks/mock-products-catalogue-state.spec';
 
-describe('ProductCardContent', () => {
+describe('ProductContentComponent', () => {
   let component: ProductContentComponent;
   let fixture: ComponentFixture<ProductContentComponent>;
 
@@ -13,10 +13,13 @@ describe('ProductCardContent', () => {
 
     fixture = TestBed.createComponent(ProductContentComponent);
     component = fixture.componentInstance;
+    component.product = mockProducts[0];
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should emit addToCart when onAddToCart is called', () => {
+    spyOn(component.addToCart, 'emit');
+    component.onAddToCart();
+    expect(component.addToCart.emit).toHaveBeenCalled();
   });
 });
