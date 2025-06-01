@@ -1,18 +1,11 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  input,
-  output,
-  OutputEmitterRef
-} from '@angular/core';
+import { Component, input, output, OutputEmitterRef } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'gec-badge',
   imports: [NgClass],
   templateUrl: './badge.component.html',
-  styleUrl: './badge.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './badge.component.scss'
 })
 export class BadgeComponent {
   color = input<'grey' | 'light-grey' | 'green'>('grey');

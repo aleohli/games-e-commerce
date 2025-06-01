@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  input,
-  output,
-  OutputEmitterRef
-} from '@angular/core';
+import { Component, input, output, OutputEmitterRef } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { Product } from 'app/core/models/product';
 
@@ -12,8 +6,7 @@ import { Product } from 'app/core/models/product';
   selector: 'gec-cart-dropdown',
   imports: [CurrencyPipe],
   templateUrl: './cart-dropdown.component.html',
-  styleUrl: './cart-dropdown.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './cart-dropdown.component.scss'
 })
 export class CartDropdownComponent {
   cart = input<Product[]>([]);

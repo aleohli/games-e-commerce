@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ImageCardComponent } from 'app/shared/image-card/image-card.component';
 import { ProductContentComponent } from 'app/content/product-catalogue/components/product-content/product-content.component';
 import { ProductCatalogueStore } from 'app/content/product-catalogue/store/product-catalogue.store';
@@ -11,8 +11,7 @@ import { BannerComponent } from 'app/shared/banner/components/banner/banner.comp
   imports: [ImageCardComponent, ProductContentComponent, BannerComponent],
   templateUrl: './product-catalogue.component.html',
   styleUrl: './product-catalogue.component.scss',
-  providers: [ProductCatalogueStore, ProductCatalogueFacadeService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  providers: [ProductCatalogueStore, ProductCatalogueFacadeService]
 })
 export class ProductCatalogueComponent {
   storeFacade = inject(ProductCatalogueFacadeService);

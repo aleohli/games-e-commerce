@@ -1,15 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  input,
-  Signal
-} from '@angular/core';
+import { Component, input, Signal } from '@angular/core';
 
 @Component({
   selector: 'gec-image-card',
   templateUrl: './image-card.component.html',
-  styleUrl: './image-card.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './image-card.component.scss'
 })
 export class ImageCardComponent {
   info = input<string>('');

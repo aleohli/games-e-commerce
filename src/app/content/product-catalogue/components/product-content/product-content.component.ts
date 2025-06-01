@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   input,
   output,
@@ -17,8 +16,7 @@ import { BadgeComponent } from 'app/shared/badge/badge.component';
   selector: 'gec-product-content',
   imports: [PercentPipe, CurrencyPipe, BadgeComponent],
   templateUrl: './product-content.component.html',
-  styleUrl: './product-content.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './product-content.component.scss'
 })
 export class ProductContentComponent {
   product = input<Product>(null);

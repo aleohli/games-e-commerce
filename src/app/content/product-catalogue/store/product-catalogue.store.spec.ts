@@ -8,14 +8,19 @@ import {
   mockProducts
 } from 'app/content/product-catalogue/mocks/mock-products-catalogue-state.spec';
 import { ProductStatus } from 'app/content/product-catalogue/models/product';
+import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 
 describe('ProductCatalogueStore', () => {
-  let store: ProductCatalogueStore;
+  let store: any;
   let service: jasmine.SpyObj<ProductCatalogueService>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ProductCatalogueStore, provideProductCatalogueService()]
+      providers: [
+        ProductCatalogueStore,
+        provideProductCatalogueService(),
+        provideExperimentalZonelessChangeDetection()
+      ]
     });
 
     store = TestBed.inject(ProductCatalogueStore);

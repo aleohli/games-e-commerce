@@ -1,13 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from 'app/app.component';
 import { RouterOutlet } from '@angular/router';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  provideExperimentalZonelessChangeDetection
+} from '@angular/core';
 import { CoreComponent } from 'app/core/components/core/core.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent]
+      imports: [AppComponent],
+      providers: [provideExperimentalZonelessChangeDetection()]
     })
       .overrideComponent(AppComponent, {
         add: { schemas: [CUSTOM_ELEMENTS_SCHEMA] },

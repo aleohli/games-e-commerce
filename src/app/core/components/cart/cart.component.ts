@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   DestroyRef,
   effect,
@@ -32,8 +31,7 @@ import { CartStore } from 'app/core/store/cart.store';
         animate('100ms', style({ transform: 'scale(1)' }))
       ])
     ])
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  ]
 })
 export class CartComponent {
   @ViewChild('cartDropdown') cartDropdown: TemplateRef<void>;

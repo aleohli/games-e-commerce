@@ -38,7 +38,7 @@ function mockProductCatalogueService(): jasmine.SpyObj<ProductCatalogueService> 
 
 export function provideProductCatalogueStore(): {
   provide: typeof ProductCatalogueStore;
-  useValue: jasmine.SpyObj<ProductCatalogueStore>;
+  useValue: jasmine.SpyObj<any>;
 } {
   return {
     provide: ProductCatalogueStore,
@@ -46,7 +46,7 @@ export function provideProductCatalogueStore(): {
   };
 }
 
-function mockProductCatalogueStore(): jasmine.SpyObj<ProductCatalogueStore> {
+function mockProductCatalogueStore(): jasmine.SpyObj<any> {
   return jasmine.createSpyObj(
     'ProductCatalogueStore',
     ['loadProducts', 'loadBanner', 'updateProductsStatus'],

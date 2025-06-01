@@ -1,17 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BadgeComponent } from 'app/shared/badge/badge.component';
+import {
+  ComponentRef,
+  provideExperimentalZonelessChangeDetection
+} from '@angular/core';
 
 describe('BadgeComponent', () => {
   let component: BadgeComponent;
   let fixture: ComponentFixture<BadgeComponent>;
+  let componentRef: ComponentRef<BadgeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BadgeComponent]
+      imports: [BadgeComponent],
+      providers: [provideExperimentalZonelessChangeDetection()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(BadgeComponent);
     component = fixture.componentInstance;
+    componentRef = fixture.componentRef;
     fixture.detectChanges();
   });
 
@@ -21,7 +28,7 @@ describe('BadgeComponent', () => {
 
   it('should emit badgeClick when clickable and clicked', () => {
     spyOn(component.badgeClick, 'emit');
-    component.clickable = true;
+    componentRef.setInput('clickable', true);
 
     component.onClick();
 

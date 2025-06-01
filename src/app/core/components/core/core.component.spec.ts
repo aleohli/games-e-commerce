@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CoreComponent } from 'app/core/components/core/core.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  provideExperimentalZonelessChangeDetection
+} from '@angular/core';
 import { MenuComponent } from 'app/core/components/menu/menu.component';
 
 describe('CoreComponent', () => {
@@ -9,7 +12,8 @@ describe('CoreComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CoreComponent]
+      imports: [CoreComponent],
+      providers: [provideExperimentalZonelessChangeDetection()]
     })
       .overrideComponent(CoreComponent, {
         add: { schemas: [CUSTOM_ELEMENTS_SCHEMA] },

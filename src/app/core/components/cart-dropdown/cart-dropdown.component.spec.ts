@@ -1,19 +1,26 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CartDropdownComponent } from 'app/core/components/cart-dropdown/cart-dropdown.component';
 import { mockCartState } from 'app/core/mocks/mock-cart-state.spec';
+import {
+  ComponentRef,
+  provideExperimentalZonelessChangeDetection
+} from '@angular/core';
 
 describe('CartDropdownComponent', () => {
   let component: CartDropdownComponent;
   let fixture: ComponentFixture<CartDropdownComponent>;
+  let componentRef: ComponentRef<CartDropdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CartDropdownComponent]
+      imports: [CartDropdownComponent],
+      providers: [provideExperimentalZonelessChangeDetection()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(CartDropdownComponent);
     component = fixture.componentInstance;
-    component.cartState = mockCartState();
+    componentRef = fixture.componentRef;
+    componentRef.setInput('cartState', mockCartState());
     fixture.detectChanges();
   });
 

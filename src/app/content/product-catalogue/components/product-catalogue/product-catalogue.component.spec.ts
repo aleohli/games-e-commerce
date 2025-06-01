@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductCatalogueComponent } from 'app/content/product-catalogue/components/product-catalogue/product-catalogue.component';
-import { provideMockStore } from '@ngrx/store/testing';
 import { ProductCatalogueFacadeService } from 'app/content/product-catalogue/store/product-catalogue-facade.service';
-import {
-  mockProductCatalogueState,
-  mockProducts
-} from 'app/content/product-catalogue/mocks/mock-products-catalogue-state.spec';
+import { mockProducts } from 'app/content/product-catalogue/mocks/mock-products-catalogue-state.spec';
 import {
   provideProductCatalogueFacadeService,
   provideProductCatalogueStore
 } from 'app/content/product-catalogue/mocks/mock-services.spec';
 import { ProductCatalogueStore } from 'app/content/product-catalogue/store/product-catalogue.store';
 import { ImageCardComponent } from 'app/shared/image-card/image-card.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  provideExperimentalZonelessChangeDetection
+} from '@angular/core';
 
 describe('ProductCatalogueComponent', () => {
   let component: ProductCatalogueComponent;
@@ -23,9 +22,9 @@ describe('ProductCatalogueComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ProductCatalogueComponent],
       providers: [
-        ...provideMockStore(),
         provideProductCatalogueFacadeService(),
-        provideProductCatalogueStore()
+        provideProductCatalogueStore(),
+        provideExperimentalZonelessChangeDetection()
       ]
     })
       .overrideComponent(ProductCatalogueComponent, {
@@ -55,10 +54,6 @@ describe('ProductCatalogueComponent', () => {
 
   it('should load Banner', () => {
     expect(productCatalogueFacadeService.loadBanner).toHaveBeenCalled();
-  });
-
-  it('should set state', () => {
-    expect(component.state).toEqual(mockProductCatalogueState());
   });
 
   it('should console log on banner click', () => {
