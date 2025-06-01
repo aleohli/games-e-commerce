@@ -1,19 +1,21 @@
 <button
   #cartBtn
   class="cart-button"
-  [disabled]="isEmpty"
-  [ngClass]="{ 'disabled': isEmpty }"
+  [disabled]="store.isEmpty()"
+  [ngClass]="{ 'disabled': store.isEmpty() }"
   (click)="openDropdown(cartBtn)"
 >
-  <div [@countAnimation]="cartState.amount">
+  <div [@countAnimation]="store.amount()">
     <img [src]="'/icons/cart.svg'" alt="Cart icon" [width]="16" />
-    <span>{{ cartState.amount }}</span>
+    <span>{{ store.amount() }}</span>
   </div>
 </button>
 
 <ng-template #cartDropdown>
   <gec-cart-dropdown
-    [cartState]="cartState"
+    [cart]="store.cart()"
+    [totalPrice]="store.totalPrice()"
+    [amount]="store.amount()"
     (clearCart)="onClearCart()"
     (removeProduct)="onRemoveProduct($event)" />
 </ng-template>

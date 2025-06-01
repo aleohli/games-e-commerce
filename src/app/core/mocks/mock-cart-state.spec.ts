@@ -1,5 +1,5 @@
-import { CartState } from 'app/core/store/cart/cart.reducer';
 import { Product } from 'app/core/models/product';
+import { CartState } from 'app/core/store/cart.store';
 
 export function mockCartState(override: Partial<CartState> = {}): CartState {
   return {

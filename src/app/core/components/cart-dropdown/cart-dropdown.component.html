@@ -1,12 +1,12 @@
 <div class="cart-dropdown-summary">
   <div class="cart-dropdown-summary-header">
-    <span class="cart-dropdown-summary-amount"> {{ cartState.amount }} items in cart</span>
-    <span class="cart-dropdown-summary-total-price">{{ cartState.totalPrice | currency }}</span>
+    <span class="cart-dropdown-summary-amount"> {{ amount() }} items in cart</span>
+    <span class="cart-dropdown-summary-total-price">{{ totalPrice() | currency }}</span>
     <button class="gec-button primary-button" (click)="onClearCart()">Clear cart</button>
   </div>
 
   <ul class="cart-dropdown-summary-products">
-    @for (product of cartState?.cart; track product.id) {
+    @for (product of cart(); track product.id) {
       <li class="cart-dropdown-summary-product-row">
         <img [src]="product.imageSrc" [width]="100" [alt]="'Cart product image'" />
         <span class="product-row-name">

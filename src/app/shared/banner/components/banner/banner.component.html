@@ -1,9 +1,9 @@
 <figure class="product-banner">
-  @if (banner.title) {
-    <figcaption class="product-banner-title">{{ banner.title }}</figcaption>
+  @if (banner().title) {
+    <figcaption class="product-banner-title">{{ banner().title }}</figcaption>
   }
   <div class="product-banner-image-wrapper">
-    <img class="product-banner-image" [src]="banner.imageSrc" [alt]="'Banner for ' + banner.info" />
+    <img class="product-banner-image" [src]="banner().imageSrc" [alt]="'Banner for ' + banner().info" />
     <button class="gec-button secondary-button product-banner-hidden-btn" (click)="onBtnClick()">
       A secret button that you should totally implement
     </button>

@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  Signal
+} from '@angular/core';
 
 @Component({
   selector: 'gec-image-card',
@@ -7,6 +12,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImageCardComponent {
-  @Input({ required: true }) info: string;
-  @Input({ required: true }) imageSrc: string;
+  info = input<string>('');
+  imageSrc: Signal<string> = input<string>('');
 }

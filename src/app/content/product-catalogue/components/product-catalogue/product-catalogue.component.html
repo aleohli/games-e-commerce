@@ -1,11 +1,11 @@
-@if (state.banner) {
+@if (storeFacade.banner()) {
   <gec-banner
-    [banner]="state.banner"
+    [banner]="storeFacade.banner()"
     (btnClick)="onBannerBtnClick()" />
 }
-@if (state.products?.length) {
+@if (storeFacade.products().length) {
   <section class="product-catalogue-content">
-    @for (product of state.products; track product.id) {
+    @for (product of storeFacade.products(); track product.id) {
       <gec-image-card [imageSrc]="product.imageSrc" [info]="product.name">
         <gec-product-content [product]="product" (addToCart)="onAddToCart(product)" />
       </gec-image-card>
@@ -13,7 +13,7 @@
   </section>
 }
 
-@if (state.loadingBanner || state.loadingProducts) {
+@if (storeFacade.loadingBanner() || storeFacade.loadingProducts()) {
   <span class="loading-spinner"></span>
 }
 

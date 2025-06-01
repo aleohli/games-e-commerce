@@ -1,9 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
-  Input,
-  Output
+  input,
+  output,
+  OutputEmitterRef,
+  signal
 } from '@angular/core';
 import {
   Product,
@@ -20,9 +21,10 @@ import { BadgeComponent } from 'app/shared/badge/badge.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductContentComponent {
-  @Input({ required: true }) product: Product;
-  @Output() addToCart = new EventEmitter<void>();
+  product = input<Product>(null);
+  addToCart: OutputEmitterRef<void> = output<void>();
 
+  mapToSignal = signal;
   productStatus = ProductStatus;
 
   onAddToCart(): void {

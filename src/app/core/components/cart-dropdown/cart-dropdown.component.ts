@@ -1,12 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
-  Input,
-  Output
+  input,
+  output,
+  OutputEmitterRef
 } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { CartState } from 'app/core/store/cart/cart.reducer';
+import { Product } from 'app/core/models/product';
 
 @Component({
   selector: 'gec-cart-dropdown',
@@ -16,9 +16,11 @@ import { CartState } from 'app/core/store/cart/cart.reducer';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartDropdownComponent {
-  @Input({ required: true }) cartState: CartState;
-  @Output() clearCart = new EventEmitter<void>();
-  @Output() removeProduct = new EventEmitter<number>();
+  cart = input<Product[]>([]);
+  totalPrice = input<number>(0);
+  amount = input<number>(0);
+  clearCart: OutputEmitterRef<void> = output<void>();
+  removeProduct: OutputEmitterRef<number> = output<number>();
 
   onClearCart() {
     this.clearCart.emit();

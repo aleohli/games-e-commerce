@@ -1,10 +1,9 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   DestroyRef,
+  effect,
   inject,
-  OnInit,
   TemplateRef,
   ViewChild,
   ViewContainerRef
@@ -17,11 +16,9 @@ import {
 import { TemplatePortal } from '@angular/cdk/portal';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CartDropdownComponent } from 'app/core/components/cart-dropdown/cart-dropdown.component';
-import { CartState, selectCartState } from 'app/core/store/cart/cart.reducer';
-import { Store } from '@ngrx/store';
-import { clearCart, removeProduct } from 'app/core/store/cart/cart.actions';
 import { NgClass } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { CartStore } from 'app/core/store/cart.store';
 
 @Component({
   selector: 'gec-cart',
@@ -38,36 +35,25 @@ import { animate, style, transition, trigger } from '@angular/animations';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
   @ViewChild('cartDropdown') cartDropdown: TemplateRef<void>;
-  cartState: CartState;
 
+  store = inject(CartStore);
   private overlayRef: OverlayRef;
   private destroyRef = inject(DestroyRef);
   private overlay = inject(Overlay);
   private viewContainerRef = inject(ViewContainerRef);
-  private store = inject(Store);
-  private cdr = inject(ChangeDetectorRef);
 
-  ngOnInit(): void {
-    this.store
-      .select(selectCartState)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((state) => {
-        this.cartState = state;
-        this.cdr.markForCheck();
-        if (this.isEmpty) {
-          this.closeDropdown();
-        }
-      });
-  }
-
-  get isEmpty(): boolean {
-    return !this.cartState.amount;
+  constructor() {
+    effect(() => {
+      if (this.store.isEmpty()) {
+        this.closeDropdown();
+      }
+    });
   }
 
   openDropdown(element: HTMLElement): void {
-    if (!this.isEmpty) {
+    if (!this.store.isEmpty()) {
       this.handleDropdownOpen(element);
     }
   }
@@ -109,10 +95,10 @@ export class CartComponent implements OnInit {
   }
 
   onClearCart(): void {
-    this.store.dispatch(clearCart());
+    this.store.clearCart();
   }
 
   onRemoveProduct(productId: number): void {
-    this.store.dispatch(removeProduct({ productId }));
+    this.store.removeProduct(productId);
   }
 }

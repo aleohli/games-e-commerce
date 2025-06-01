@@ -1,9 +1,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
-  Input,
-  Output
+  input,
+  output,
+  OutputEmitterRef
 } from '@angular/core';
 import { NgClass } from '@angular/common';
 
@@ -15,9 +15,9 @@ import { NgClass } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BadgeComponent {
-  @Input() color: 'grey' | 'light-grey' | 'green' = 'grey';
-  @Input() clickable = false;
-  @Output() badgeClick = new EventEmitter<void>();
+  color = input<'grey' | 'light-grey' | 'green'>('grey');
+  clickable = input<boolean>(false);
+  badgeClick: OutputEmitterRef<void> = output<void>();
 
   onClick() {
     if (this.clickable) {

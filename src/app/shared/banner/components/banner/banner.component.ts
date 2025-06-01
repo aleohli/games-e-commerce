@@ -1,9 +1,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
-  Input,
-  Output
+  input,
+  output,
+  OutputEmitterRef
 } from '@angular/core';
 import { Banner } from 'app/shared/banner/models/banner';
 
@@ -14,8 +14,8 @@ import { Banner } from 'app/shared/banner/models/banner';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BannerComponent {
-  @Input({ required: true }) banner: Banner;
-  @Output() btnClick = new EventEmitter();
+  banner = input<Banner>(null);
+  btnClick: OutputEmitterRef<void> = output<void>();
 
   onBtnClick(): void {
     this.btnClick.emit();
