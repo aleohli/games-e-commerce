@@ -19,7 +19,7 @@ export class ProductCatalogueFacadeService {
     this.subscribeToCartChange();
   }
 
-  private subscribeToCartChange() {
+  private subscribeToCartChange(): void {
     combineLatest([
       this.store.select(selectCartProductIds),
       this.productCatalogueStore.products$

@@ -19,7 +19,7 @@ export class BadgeComponent {
   @Input() clickable = false;
   @Output() badgeClick = new EventEmitter<void>();
 
-  onClick() {
+  onClick(): void {
     if (this.clickable) {
       this.badgeClick.emit();
     }

@@ -27,8 +27,8 @@ import { BannerComponent } from 'app/shared/banner/components/banner/banner.comp
 })
 export class ProductCatalogueComponent implements OnInit {
   state: ProductCatalogueState;
-  storeFacade = inject(ProductCatalogueFacadeService);
-  destroyRef = inject(DestroyRef);
+  private storeFacade = inject(ProductCatalogueFacadeService);
+  private destroyRef = inject(DestroyRef);
   private cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {

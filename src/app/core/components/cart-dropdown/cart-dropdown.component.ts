@@ -20,11 +20,11 @@ export class CartDropdownComponent {
   @Output() clearCart = new EventEmitter<void>();
   @Output() removeProduct = new EventEmitter<number>();
 
-  onClearCart() {
+  onClearCart(): void {
     this.clearCart.emit();
   }
 
-  onRemoveProduct(productId: number) {
+  onRemoveProduct(productId: number): void {
     this.removeProduct.emit(productId);
   }
 }
