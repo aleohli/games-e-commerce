@@ -12,7 +12,7 @@ export class BadgeComponent {
   clickable = input<boolean>(false);
   badgeClick: OutputEmitterRef<void> = output<void>();
 
-  onClick() {
+  onClick(): void {
     if (this.clickable) {
       this.badgeClick.emit();
     }

@@ -8,13 +8,20 @@
   <ul class="cart-dropdown-summary-products">
     @for (product of cart(); track product.id) {
       <li class="cart-dropdown-summary-product-row">
-        <img [src]="product.imageSrc" [width]="100" [alt]="'Cart product image'" />
+        <img
+          [src]="product.imageSrc"
+          width="100"
+          height="56"
+          alt="Cart product image"
+        />
         <span class="product-row-name">
           <span>{{ product.name }}</span>
           <a
             tabindex="0"
             (click)="onRemoveProduct(product.id)"
-            (keydown.enter)="onRemoveProduct(product.id)">Remove</a>
+            (keydown.enter)="onRemoveProduct(product.id)"
+            >Remove</a
+          >
         </span>
         <span class="product-row-price">{{ product.price | currency }}</span>
       </li>

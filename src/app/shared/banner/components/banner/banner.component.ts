@@ -7,7 +7,7 @@ import { Banner } from 'app/shared/banner/models/banner';
   styleUrl: './banner.component.scss'
 })
 export class BannerComponent {
-  banner = input<Banner>(null);
+  banner = input.required<Banner>();
   btnClick: OutputEmitterRef<void> = output<void>();
 
   onBtnClick(): void {

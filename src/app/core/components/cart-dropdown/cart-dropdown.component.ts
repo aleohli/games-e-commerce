@@ -9,17 +9,17 @@ import { Product } from 'app/core/models/product';
   styleUrl: './cart-dropdown.component.scss'
 })
 export class CartDropdownComponent {
-  cart = input<Product[]>([]);
-  totalPrice = input<number>(0);
-  amount = input<number>(0);
+  cart = input.required<Product[]>();
+  totalPrice = input.required<number>();
+  amount = input.required<number>();
   clearCart: OutputEmitterRef<void> = output<void>();
   removeProduct: OutputEmitterRef<number> = output<number>();
 
-  onClearCart() {
+  onClearCart(): void {
     this.clearCart.emit();
   }
 
-  onRemoveProduct(productId: number) {
+  onRemoveProduct(productId: number): void {
     this.removeProduct.emit(productId);
   }
 }

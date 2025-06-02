@@ -6,6 +6,6 @@ import { Component, input, Signal } from '@angular/core';
   styleUrl: './image-card.component.scss'
 })
 export class ImageCardComponent {
-  info = input<string>('');
-  imageSrc: Signal<string> = input<string>('');
+  info = input.required<string>();
+  imageSrc: Signal<string> = input.required<string>();
 }

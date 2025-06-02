@@ -2,11 +2,11 @@
   #cartBtn
   class="cart-button"
   [disabled]="store.isEmpty()"
-  [ngClass]="{ 'disabled': store.isEmpty() }"
+  [ngClass]="{ disabled: store.isEmpty() }"
   (click)="openDropdown(cartBtn)"
 >
   <div [@countAnimation]="store.amount()">
-    <img [src]="'/icons/cart.svg'" alt="Cart icon" [width]="16" />
+    <img [src]="'/icons/cart.svg'" width="16" height="14" alt="Cart icon" />
     <span>{{ store.amount() }}</span>
   </div>
 </button>

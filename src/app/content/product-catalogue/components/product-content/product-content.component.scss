@@ -1,6 +1,5 @@
 @use 'assets/styles/_colours.scss';
 
-
 :host {
   height: 100%;
   display: flex;
@@ -41,7 +40,8 @@
       transition: opacity 0.2s;
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       .add-badge-default {
         opacity: 0;
       }

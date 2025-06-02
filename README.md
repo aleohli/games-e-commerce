@@ -1,29 +1,66 @@
-# MyApp
+# Games e-commerce
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+This repository contains an Angular-based e-commerce application for games, featuring a mock backend powered by JSON Server.
+The solution on the `main` branch was implemented using the 'traditional' approach, without signals. The `signal-migration` branch contains a migration of the project to use signals (excluding tests).
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Browse games
+- Shopping cart
+- Mock REST API using JSON Server
+
+## Prerequisites
+
+- Node.js (version ^18.19.1 || ^20.11.1 || ^22.0.0)
+- Angular CLI (version ^19.0.0)
+- npm (comes with Node.js)
+
+## Getting Started
+
+1. Clone the repository
 
 ```bash
-ng serve
+git clone <repository-url>
+cd <project-folder>
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+2. Install dependencies
 
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Running the Application
+
+1. Start the JSON Server.
+   This project uses JSON Server as a mock backend. The server reads data from a db.json file and exposes RESTful endpoints.
+
+To start the JSON Server, run:
 
 ```bash
-ng generate --help
+npm run json-server
+```
+
+By default, this will start the mock API at http://localhost:3000/.
+
+2. Start the Angular Development Server
+   In a separate terminal, run:
+
+```bash
+npm run start
+```
+
+The Angular app will be available at http://localhost:4200/ and will automatically reload on code changes.
+
+## JSON Server Setup
+
+The `db.json` file in the project root contains sample data for products (games) and banner.
+
+Endpoints will be available at:
+
+```
+/products
+/banner
 ```
 
 ## Building
@@ -31,29 +68,19 @@ ng generate --help
 To build the project run:
 
 ```bash
-ng build
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+This will compile your project and store the build artifacts in the `dist/` directory.
 
 ## Running unit tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
 ```bash
-ng test
+npm run test
 ```
 
-## Running end-to-end tests
+## Other
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+In the `COMMENTS.md` file, you can find the comments on the project implementation.

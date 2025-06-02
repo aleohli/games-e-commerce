@@ -19,7 +19,7 @@ import { BadgeComponent } from 'app/shared/badge/badge.component';
   styleUrl: './product-content.component.scss'
 })
 export class ProductContentComponent {
-  product = input<Product>(null);
+  product = input.required<Product>();
   addToCart: OutputEmitterRef<void> = output<void>();
 
   mapToSignal = signal;

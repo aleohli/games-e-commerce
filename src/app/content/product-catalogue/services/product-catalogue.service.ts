@@ -8,8 +8,8 @@ import { Banner } from 'app/shared/banner/models/banner';
   providedIn: 'root'
 })
 export class ProductCatalogueService {
-  private readonly productsUrl = 'http://localhost:3000/products';
-  private readonly bannerUrl = 'http://localhost:3000/banner';
+  private readonly productsUrl = 'api/products';
+  private readonly bannerUrl = 'api/banner';
   private http = inject(HttpClient);
 
   getProducts(): Observable<Product[]> {
